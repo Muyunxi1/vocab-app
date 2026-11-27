@@ -32,13 +32,22 @@
 
 ## 截图
 
-把真机截图放到 `docs/screenshots/` 后在此处按下列格式引用（当前仓库尚未放入截图）：
+Android 真机截图，版本 1.7.31，护眼配色。
 
-```markdown
-| 词库 | 手写录入 | 候选与释义 | 复习 |
-| --- | --- | --- | --- |
-| ![词库](docs/screenshots/library.png) | ![手写](docs/screenshots/handwriting.png) | ![候选](docs/screenshots/candidates.png) | ![复习](docs/screenshots/review.png) |
-```
+| 词库首页 | 手写录入 | 词库详情 |
+| --- | --- | --- |
+| <img src="docs/screenshots/home.jpg" width="220"> | <img src="docs/screenshots/handwriting.jpg" width="220"> | <img src="docs/screenshots/library.jpg" width="220"> |
+| 四项统计、加生词入口、多词库并列 | 笔迹画板，可切橡皮、笔粗与配色 | 排序筛选，词条标出忘记次数 |
+
+| 复习卡片 | 精读文章 | 句子解析 |
+| --- | --- | --- |
+| <img src="docs/screenshots/review.jpg" width="220"> | <img src="docs/screenshots/article.jpg" width="220"> | <img src="docs/screenshots/sentence.jpg" width="220"> |
+| 忘记、模糊、记得三档，答完按间隔重排 | 按词库生成短文，可逐句翻译与朗读 | 拆句子结构、给重点词与例句 |
+
+| 整段翻译 | 遗忘排行 | 换配色 |
+| --- | --- | --- |
+| <img src="docs/screenshots/translate.jpg" width="220"> | <img src="docs/screenshots/forget-ranking.jpg" width="220"> | <img src="docs/screenshots/theme.jpg" width="220"> |
+| 导入 PDF 或拍照识别后整段翻译、提取生词 | 按忘记次数排序，方便回头啃硬词 | 护眼、纯白、深色三套配色 |
 
 ## 技术栈
 
