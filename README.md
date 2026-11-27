@@ -1,10 +1,23 @@
 # 词学家（vocab_app）
 
+![License](https://img.shields.io/badge/license-MIT-green) ![Open Source](https://img.shields.io/badge/open--source-yes-brightgreen) ![Version](https://img.shields.io/badge/version-1.7.31-blue)
+
+**本项目为开源版本**，代码以 MIT 许可证发布，可自由使用、修改与再分发。
+
 一款本地优先的英语生词积累与精读 App，Android 端，Flutter 开发。
 
 看到生词，快速录入，自动配释义，按节奏复习。词库、生词、复习记录、生成的文章与内置词典全部存放在设备本地，不需要账号，不上云。
 
-当前版本：1.7.31（构建 82）
+当前版本：1.7.31（构建 82），开源版本
+
+## 开源版本说明
+
+本仓库面向学习与二次开发，与准备上架商店的分发版本存在以下差别：
+
+- 使用 debug 签名，仅供自行编译安装测试；正式分发包请自行生成 keystore 并替换 `signingConfig`
+- 不内置任何第三方密钥，联网增强功能需使用者自填 DeepSeek 与有道密钥
+- 内置词典为 ECDICT 数据，按 MIT 许可随仓库分发
+- 未包含应用商店上架所需的隐私政策页、备案材料与合规文案
 
 ## 功能
 
