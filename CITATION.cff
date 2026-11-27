@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: 如果本项目对你的学习、研究或开发有帮助，请按下列格式引用。
+title: 词学家（vocab_app）
+abstract: 一款本地优先的英语生词积累与精读 Android 应用。支持手写识别录入、拍照取词、内置离线词典配释义、按固定间隔的复习排程与统计反馈，全部数据存放在设备本地，无需账号，不上云。
+authors:
+  - name: 词学家项目作者（vocab_app）
+version: 1.7.31
+date-released: 2026-11-27
+license: MIT
+repository-code: https://github.com/你的用户名/vocab-app
+keywords:
+  - Flutter
+  - Android
+  - 英语学习
+  - 生词本
+  - 离线词典
+  - 间隔复习
+  - 手写识别
+type: software
