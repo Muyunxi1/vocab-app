@@ -1,0 +1,54 @@
+plugins {
+    id "com.android.application"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.vocab.vocab_app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        applicationId = "com.vocab.vocab_app"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    // --target-platform android-arm64 只约束 Flutter 引擎，插件 AAR 里的 .so
+    // （libonnxruntime、mlkit、sherpa-onnx 等）仍按全 ABI 打进包，白占体积。
+    // 这里只保留 arm64，其余三套 ABI（x86_64 / x86 / armeabi-v7a）一并排除。
+    packaging {
+        jniLibs {
+            excludes.addAll(["lib/x86_64/**", "lib/x86/**", "lib/armeabi-v7a/**"])
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation "com.google.mlkit:text-recognition-chinese:16.0.1"
+    // 数字墨水模型下载走 model-downloader，内部用 WorkManager 调度；
+    // work-runtime 由 ML Kit AAR 以传递依赖带入，但不暴露给 app 模块编译 classpath，
+    // 这里显式声明与传递带入的 2.7.0 对齐，AppApplication 经 Configuration.Provider 按需初始化。
+    implementation "androidx.work:work-runtime:2.7.0"
+}

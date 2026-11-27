@@ -1,0 +1,48 @@
+name: vocab_app
+description: 英语生词记录与复习（本地版）
+publish_to: 'none'
+version: 1.7.31+82
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.0
+  path: ^1.9.0
+  file_picker: ^9.0.0
+  image_picker: 1.1.2
+  google_mlkit_text_recognition: ^1.0.3
+  google_mlkit_digital_ink_recognition: ^1.0.3
+  crypto: ^3.0.8
+  syncfusion_flutter_pdf: ^35.1.46
+  flutter_tts: ^4.2.5
+  enough_convert: ^1.7.1
+  audioplayers: 5.2.1
+  # 1.12.0 Dart 绑定配 ^1.12.0 浮动的 android 原生库时，会解析到 1.12.36；后者
+  # 的 OfflineTtsModelConfig 在 kokoro 之后多了 kitten/zipvoice/pocket/supertonic
+  # 四个子结构，旧绑定 calloc 的结构体偏小，创建引擎时越界读到堆垃圾指针，
+  # strlen 段错误（真机 SIGSEGV）。见下方 override 把 android 钉回配套的 1.12.0。
+  sherpa_onnx: 1.12.0
+  archive: ^4.7.1
+  path_provider: ^2.1.6
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+# 插件原生工程与项目 AGP 9.1.0 不兼容，锁到仍使用 Groovy 脚本的版本
+dependency_overrides:
+  image_picker_android: 0.8.12+25
+  # 2.3.x 改用 package:jni 走 CMake 编 native，和项目 AGP 9.1.0 构建失败，
+  # 锁回不依赖 jni 的 2.2.x
+  path_provider_android: 2.2.17
+  # 与 sherpa_onnx 1.12.0 Dart 绑定同期配套的原生库；阻断 ^1.12.0 浮动到
+  # 1.12.36（结构体布局错位导致创建 TTS 引擎时越界崩溃）。1.12.0 仍内置
+  # espeak-ng 音素前端，piper 模型的音素化链路保持原样。
+  sherpa_onnx_android: 1.12.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/dict.db

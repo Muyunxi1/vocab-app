@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- allowBackup 已经关掉；这里按域再排除一次，防止个别 ROM 忽略该开关。
+     词库里全是用户自己的生词，密钥在 sharedpref 里，都不该被 adb backup 带走。 -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="." />
+    <exclude domain="database" path="." />
+    <exclude domain="file" path="." />
+</full-backup-content>
